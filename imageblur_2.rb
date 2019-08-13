@@ -1,4 +1,4 @@
-# OOP Image Blur 1 Challenge
+# OOP Image Blur 2 Challenge
 # Author: Chris Howle
 
 class Image
@@ -18,9 +18,11 @@ class Image
   def output_image(image_out)
       image_out.each do |i|
         i.each do |j|
+
           # Use print instead of puts to avoid the new line after each element
           print j
         end
+
         # After each row, start a new line
         puts "\n"
       end
@@ -66,21 +68,20 @@ end #end Class
 
 image = Image.new([
   [0, 0, 0, 0],
+  [0, 0, 1, 0],
+  [0, 0, 0, 0],
   [0, 1, 0, 0],
-  [0, 0, 0, 1],
+  [0, 0, 0, 0],
   [0, 0, 0, 0]
 ])
 
 # Show image before transformation
-
 image.output_image(image.img)
 
 puts "Transformed image:"
 
 # Transform image
-
 image.transform_image
 
 # Show transformed image
-
 image.output_image(image.transformed_img)
