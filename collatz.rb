@@ -12,7 +12,7 @@ def collatz(num)
         return max_length
     end
 
-    n = 600000
+    n = 2
 
     while n <= num
 
@@ -22,7 +22,7 @@ def collatz(num)
         new_n = n
 
         # Store first value before the calculations begin
-        collatz_array[n-1][i] = new_n
+        #collatz_array[n-1][i] = new_n
         #print "#{new_n} stored\n"
 
         while new_n != 1
@@ -34,7 +34,7 @@ def collatz(num)
 
             #print "#{new_n} stored\n"
             # Store the calculated value in the two-dimensional array
-            collatz_array[n-1][i] = new_n
+            #collatz_array[n-1][i] = new_n
 
             # Increment i
             i += 1
@@ -57,10 +57,6 @@ def collatz(num)
         #print "n is now #{n}\n"
 
     end # end while
-
-    #collatz_array.each do |i|
-        #puts "#{collatz_array[i][0..19]}"
-    #end
 
     puts "#{max_index} has the longest sequence of #{max_length}"
 end
