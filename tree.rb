@@ -10,7 +10,6 @@ class Tree
 end
 
 class MyQueue
-  attr_reader :queue
 
   def initialize
     @queue = []
@@ -48,6 +47,7 @@ def depth_first(tree, num)
         end
       end
     end
+
     # After children have been processed, pop from stack
     tree=stack.pop
   end
@@ -65,34 +65,25 @@ def breadth_first(tree, num)
   end
 
   aqueue = MyQueue.new
-  aqueue.enqueue(tree)
-  puts "initial queue is: " + aqueue.queue[0].payload.to_s
+
+  # Directly initialize head with the value of tree
+  head = tree
 
   while aqueue
-    head = aqueue.queue[0]
-    puts "tree at top of while is: " + head.payload.to_s
+    puts "active head is " + head.payload.to_s
     head.children.each do |i|
       if i.payload == num
         return i
       else 
         # Put each child in the queue
         aqueue.enqueue(i)
-        puts "after enqueue: "
-        aqueue.queue.each do |i|
-          puts i.payload
-        end
-      end
-      #tree = aqueue.dequeue
-    end
+      end # end if
+    end # end do
+
     # After children have been processed, dequeue a node
-
-    tree = aqueue.dequeue
-    puts "after dequeue: "
-    aqueue.queue.each do |i|
-      puts i.payload
-    end
-
-  end
+    # that will become the new head
+    head = aqueue.dequeue
+  end # end while
 end
 
 
@@ -110,14 +101,14 @@ shallow_fifth_node = Tree.new(5, [ninth_node])
 # The "Trunk" of the tree
 trunk   = Tree.new(2, [seventh_node, shallow_fifth_node])
 
-x = breadth_first(trunk, 6)
+x = breadth_first(trunk, 11)
 if x.payload != nil
   puts "Found match for " + x.payload.to_s
 else
   puts "No match"
 end
 
-y = depth_first(trunk, 6)
+y = depth_first(trunk, 11)
 if y.payload != nil
   puts "Found match for " + y.payload.to_s
 else
